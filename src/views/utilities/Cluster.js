@@ -9,6 +9,9 @@ import Modal from "./modal";
 import { Button } from "@material-ui/core";
 import clusterImg from "./img/Cluster.jpeg";
 import "./css/global.css";
+
+import MainCard from "ui-component/cards/MainCard";
+import SecondaryAction from "ui-component/cards/CardSecondaryAction";
 const Items = [
   {
     id: uuid(),
@@ -33,6 +36,18 @@ const Items = [
   {
     id: uuid(),
     content: "Ubuntu",
+  },
+  {
+    id: uuid(),
+    content: "React",
+  },
+  {
+    id: uuid(),
+    content: "Node.js",
+  },
+  {
+    id: uuid(),
+    content: "Flask",
   },
 ];
 console.log(Items);
@@ -112,37 +127,42 @@ export default function Cluster() {
     setModalOpen(false);
   };
   return (
-    <AllArea>
-      <DragDropContext
-        // onDragStart={onDragStart}
-        // onDragUpdate={onDragUpdate}
-        onDragEnd={onDragEnd}
-      >
-        <List>
-          <Column items={Items} droppableId="Items" />
-        </List>
-
-        <ImgArea>
-          <img class="img" src={clusterImg} alt="cluster" />
-        </ImgArea>
-        <Container>
-          <Column items={items} droppableId="area" />
-        </Container>
-        <Remove items={items} droppableId="remove" />
-      </DragDropContext>
-      <ButtonBox>
-        <Button
-          onClick={() => {
-            setTimeout(OpenModal, 2000);
-          }}
-          color="primary"
+    <MainCard
+      title="Cluster DnD"
+      secondary={<SecondaryAction link="https://kubernetes.io/ko/" />}
+    >
+      <AllArea>
+        <DragDropContext
+          // onDragStart={onDragStart}
+          // onDragUpdate={onDragUpdate}
+          onDragEnd={onDragEnd}
         >
-          Submit
-        </Button>
-      </ButtonBox>
-      <Modal open={modalOpen} close={CloseModal} header="제출 확인 창">
-        제출이 완료되었습니다!
-      </Modal>
-    </AllArea>
+          <List>
+            <Column items={Items} droppableId="Items" />
+          </List>
+
+          <ImgArea>
+            <img class="img" src={clusterImg} alt="cluster" />
+          </ImgArea>
+          <Container>
+            <Column items={items} droppableId="area" />
+          </Container>
+          <Remove items={items} droppableId="remove" />
+        </DragDropContext>
+        <ButtonBox>
+          <Button
+            onClick={() => {
+              setTimeout(OpenModal, 2000);
+            }}
+            color="primary"
+          >
+            Submit
+          </Button>
+        </ButtonBox>
+        <Modal open={modalOpen} close={CloseModal} header="제출 확인 창">
+          제출이 완료되었습니다!
+        </Modal>
+      </AllArea>
+    </MainCard>
   );
 }

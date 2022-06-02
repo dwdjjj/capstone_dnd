@@ -28,7 +28,7 @@ export const List = styled.div`
   @media (min-width: 500px) {
     position: absolute;
     width: 250px;
-    max-height: 500px;
+    max-height: 600px;
     background-color: lightslategray;
   }
 `;
@@ -49,7 +49,7 @@ export const Container = styled.div`
   @media (min-width: 500px) {
     position: absolute;
     width: 250px;
-    max-height: 500px;
+    max-height: 600px;
     background-color: lightskyblue;
   }
 `;
